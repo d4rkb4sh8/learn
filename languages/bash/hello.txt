@@ -1,0 +1,4 @@
+echo Hello hacker
+hacking is truly an invaluable skill
+learn it well
+and hack the planet
