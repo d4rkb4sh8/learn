@@ -1,0 +1,12 @@
+❯ echo $SHELL
+/bin/bash
+
+learn/languages/bash on  main [✘?] 
+❯ ps $$
+    PID TTY      STAT   TIME COMMAND
+  25686 pts/1    Ss     1:19 /bin/bash
+
+learn/languages/bash on  main [✘?] 
+❯ ps -p $$
+    PID TTY          TIME CMD
+  25686 pts/1    00:01:19 bash
