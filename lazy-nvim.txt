@@ -1,0 +1,71 @@
+### Vim/Neovim Commands
+
+1. **`:help`** - Access built-in documentation system.
+2. **`:set`** - Set options dynamically, many of which can be set in init files and do not require running this command explicitly after setting them.
+3. **`:source`** - Re-source (reload) the current Vim configuration file.
+4. **`Ctrl + c`** - Cancel a search or operation in progress.
+5. **`Ctrl + d`** - Scroll half page down.
+6. **`Ctrl + e`** - Move cursor down one line, without moving horizontally.
+7. **`Ctrl + f`** - Scroll full page forward.
+8. **`Ctrl + h`** - Delete the character before the cursor.
+9. **`Ctrl + n`** - Start a new line below the current line.
+10. **`Ctrl + p`** - Cycle through command or file completion suggestions.
+11. **`Ctrl + u`** - Scroll half page up.
+12. **`Ctrl + v`** - Enter visual block mode.
+13. **`Ctrl + w, h/j/k/l`** - Move the cursor to adjacent windows (left, down, up, right).
+14. **`Ctrl + y`** - Move cursor up one line, without moving horizontally.
+15. **`g;`** - Move to the next change in normal mode.
+16. **`g,`** - Move to the previous change in normal mode.
+17. **`:w`** - Write (save) the current file.
+18. **`:q`** - Quit Vim.
+19. **`:wq`** - Write and quit Vim.
+20. **`:e filename`** - Edit a different file in the currently opened file's buffer.
+
+### LazyVim Specific Commands (if applicable)
+- These commands are specific to the configuration of Neovim, focusing on enhancing the default capabilities with additional features or themes as part of the LazyVim 
+setup.
+
+1. **`<leader> + e`** - Open file explorer in a floating window.
+2. **`<leader> + t`** - Toggle between different layouts for windows and panels.
+3. **`<leader> + n`** - Create a new tab.
+4. **`<leader> + c`** - Close the current buffer without closing the window.
+5. **`<leader> + x`** - Close the current buffer and kill its associated process (useful for certain file types).
+6. **`<C-n>`** - Incrementally search through files in a fuzzy finder menu.
+7. **`<C-p>`** - Same as above but in reverse direction.
+8. **`<leader> + r`** - Reload the configuration, useful for quickly testing changes without restarting Neovim.
+
+### Keyboard Shortcuts (General Vim)
+
+1. **`Ctrl + c`** - Cancel a search or operation in progress.
+2. **`Ctrl + d`** - Scroll half page down.
+3. **`Ctrl + e`** - Move cursor down one line, without moving horizontally.
+4. **`Ctrl + f`** - Scroll full page forward.
+5. **`Ctrl + h`** - Delete the character before the cursor.
+6. **`Ctrl + n`** - Start a new line below the current line.
+7. **`Ctrl + p`** - Cycle through command or file completion suggestions.
+8. **`Ctrl + u`** - Scroll half page up.
+9. **`Ctrl + v`** - Enter visual block mode.
+10. **`Ctrl + w, h/j/k/l`** - Move the cursor to adjacent windows (left, down, up, right).
+11. **`Ctrl + y`** - Move cursor up one line, without moving horizontally.
+12. **`g;`** - Move to the next change in normal mode.
+13. **`g,`** - Move to the previous change in normal mode.
+14. **`:w`** - Write (save) the current file.
+15. **`:q`** - Quit Vim.
+16. **`:wq`** - Write and quit Vim.
+17. **`:e filename`** - Edit a different file in the currently opened file's buffer.
+
+### Keyboard Shortcuts (LazyVim Specific)
+- These shortcuts are specific to the enhancements or customizations provided by the LazyVim configuration for Neovim, which might include additional workflows and 
+features not found in vanilla Vim.
+
+1. **`<leader> + e`** - Open file explorer in a floating window.
+2. **`<leader> + t`** - Toggle between different layouts for windows and panels.
+3. **`<leader> + n`** - Create a new tab.
+4. **`<leader> + c`** - Close the current buffer without closing the window.
+5. **`<leader> + x`** - Close the current buffer and kill its associated process.
+6. **`<C-n>`** - Incrementally search through files in a fuzzy finder menu.
+7. **`<C-p>`** - Same as above but in reverse direction.
+8. **`<leader> + r`** - Reload the configuration, useful for quickly testing changes without restarting Neovim.
+
+This list should provide a comprehensive overview of both general and specific commands and shortcuts within Vim or Neovim, including those customized through LazyVim.
+

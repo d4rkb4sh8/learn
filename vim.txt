@@ -1,0 +1,85 @@
+### Normal Mode Commands
+These commands are executed while in Normal mode, which is the default mode after opening a file.
+
+- **Movement**: `h`, `j`, `k`, `l` - Move left, down, up, right respectively.
+- **Editing**: 
+  - `i` - Insert before the cursor.
+  - `a` - Append after the cursor.
+  - `o` - Open a new line below and insert.
+  - `O` - Open a new line above and insert.
+  - `cw`, `c$`, `cc` - Change word, to end of line, or entire line.
+- **Cut/Copy/Paste**:
+  - `x`, `X` - Delete (cut) the character left or right of the cursor.
+  - `dd` - Cut a whole line.
+  - `y` - Yank (copy) a line.
+  - `yy` - Yank a whole line.
+  - `p`, `P` - Paste after, before cursor.
+- **Search and Replace**:
+  - `/pattern<Enter>` - Search for 'pattern'.
+  - `n`, `N` - Move to next/previous match.
+  - `:%s/old/new/g` - Global replace 'old' with 'new' in the whole file.
+- **Multiple Cursor Mode**:
+  - `<C-n>` or `<C-down>` - Create a new cursor.
+  - `g;`, `g,` - Move to next/previous cursor.
+- **Macros**:
+  - `q{register}` - Start recording macro in register {register}.
+  - `@`{register} - Execute macro from register {register}.
+- **Navigation**:
+  - `G` - Go to last line of file.
+  - `{number}G` or `<number><Enter>` - Go to line number {number}.
+  - `H`, `M`, `L` - Move to top, middle, bottom of the screen.
+- **Buffers and Tabs**:
+  - `:tabnew` - Open a new tab.
+  - `:tabnext`, `:tabprev` - Switch between tabs.
+  - `:bnext`, `:bprevious` - Switch between buffers.
+- **Other**:
+  - `u` - Undo.
+  - `<C-r>` - Redo.
+  - `.` - Repeat last command.
+  - `Ctrl + o` and `Ctrl + i` - Move backward and forward in jump list.
+
+### Insert Mode Commands
+These commands are executed while in Insert mode, which is activated by pressing `i`, `a`, etc.
+
+- **Movement**: Similar to Normal mode but directly moves the cursor.
+- **Editing**: Type text as usual.
+- **Inserting/Appending**: As mentioned above (`i`, `a`, `o`, `O`).
+- **Completion and Autocompletion**: 
+  - `<C-n>`, `<C-p>` - Cycle through completions.
+  - `<Tab>` - Trigger the default completion function (usually file names or keyword completion).
+- **Escaping Insert Mode**: Simply press `Esc` to return to Normal mode.
+
+### Command-line Mode Commands
+These commands are executed by entering a colon (`:`) command in Normal mode and pressing `Enter`.
+
+- **Basic Navigation**: 
+  - `:help`, `:h <command>` - Get help on Vim commands or topics.
+  - `:w` - Write (save) the file.
+  - `:q` - Quit Vim.
+  - `:wq` - Write and quit.
+  - `:e filename` - Edit another file in a new buffer.
+- **Search and Replace**: As mentioned above (`:%s/old/new/g`).
+- **Buffer Management**:
+  - `:bnext`, `:bprevious` - Switch between buffers.
+  - `:bd` - Delete the current buffer without quitting Vim.
+- **Other**:
+  - `:set number` or `:set nonumber` - Toggle line numbers on/off.
+  - `:tabnew` - Open a new tab.
+  - `:split`, `:vsplit` - Split the window horizontally or vertically.
+
+### Visual Mode Commands
+These commands are executed while in Visual mode, activated by selecting text with `v`.
+
+- **Movement**: Arrow keys or `hjkl`.
+- **Editing**:
+  - `c` - Change selection.
+  - `y` - Yank (copy) the selected text.
+  - `d` - Delete the selected text.
+  - `>` and `<` - Indent right and left respectively.
+- **Visual Line Mode**: Use `V` for linewise selections.
+- **Other**:
+  - `gv` - Re-select the previously selected text.
+  - `:'<,'>command` - Run command on visually selected lines.
+
+This list is not exhaustive and Vim has many more commands depending on its configuration (`~/.vimrc`). For a complete reference, you can use `:help` inside Vim to 
+access the built-in help system or consult online documentation specific to your version of Vim.
