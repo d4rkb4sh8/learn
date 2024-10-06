@@ -1,0 +1,89 @@
+ The `netstat` command in Linux is a powerful tool used to display network-related information, such as active connections, routing tables, interface statistics, masquerade rules, and multicast memberships. Here are some of its key features along with examples:
+
+### 1. Display Active Internet Connections
+The most common use of `netstat` is to show the current TCP and UDP connections on a system.
+```sh
+netstat -tuln
+```
+This command will display:
+- **-t**: Show only TCP ports.
+- **-u**: Show only UDP ports.
+- **-l**: Display only listening ports.
+- **-n**: Show numerical addresses instead of trying to resolve hostnames.
+
+Example output:
+```
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+tcp6       0      0 :::22                   :::*                    LISTEN      1357/sshd           
+tcp6       0      0 ::1:631                 :::*                    LISTEN      487/cupsd           
+udp        0      0 192.168.1.100:53         0.0.0.0:*                           78/systemd-resolve 
+udp        0      0 192.168.1.100:123         0.0.0.0:*                           487/cupsd           
+```
+
+### 2. Display Network Connections by Program
+You can also use `netstat` to find out which program is using a specific port.
+```sh
+netstat -tuln | grep <port_number>
+```
+Example: To check if the HTTP server (port 80) is running:
+```sh
+netstat -tuln | grep 80
+```
+
+### 3. Display IPv6 Connections
+If your system supports IPv6, `netstat` can display information about IPv6 connections.
+```sh
+netstat -t6uln
+```
+This command will show both IPv4 and IPv6 connections if they are active on the system.
+
+### 4. Display Routing Table
+The routing table shows how data packets are directed from one network interface to another through various networks until they reach their destination.
+```sh
+netstat -r
+```
+Example output:
+```
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+default         192.168.1.1     0.0.0.0         UG    0      0        0 eth0
+192.168.1.0     *               255.255.255.0   UG    0      0        0 eth0
+```
+
+### 5. Display Network Interface Statistics
+This can give you detailed statistics about network interfaces, including bytes sent and received, errors, dropped packets, etc.
+```sh
+netstat -i
+```
+Example output:
+```
+Kernel Interface table
+Iface      MTU    RX-OK   RX-ERR   RX-DRP   RX-OVR    TX-OK   TX-ERR   TX-DRP   TX-OVR   Coll
+eth0       1500    123456  12      34       56        7890    0       0       0       0
+lo         65536   123456  0       0        0         123456 0       0       0       0
+```
+
+### 6. Display Masquerade Rules (for iptables)
+If you are using `iptables` for NAT, `netstat` can display the masquerading rules.
+```sh
+netstat -tuln | grep :masq
+```
+This is useful if you need to check your IP masquerading settings.
+
+### 7. Display Multicast Membership
+Multicast groups that a host has joined can be displayed using `netstat`.
+```sh
+netstat -g
+```
+Example output:
+```
+IPv4 Multicast Memberships
+Interface       Group
+eth0            224.0.0.1
+lo              224.0.0.2
+```
+
+### Summary
+`netstat` is a versatile command that provides detailed information about network configurations and connections on Linux systems, making it an essential tool for troubleshooting and understanding the network stack.
+
