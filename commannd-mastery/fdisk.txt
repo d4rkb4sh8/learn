@@ -1,0 +1,80 @@
+ The `fdisk` command in Linux is a standard tool for partitioning disks. It allows you to view, create, and delete partitions on a hard drive or other storage devices. Below are some key features of the `fdisk` command along with examples:
+
+### Key Features of fdisk Command
+
+1. **View Partitions**: You can list all partitions on a disk.
+2. **Add New Partition**: Create new partitions on a disk.
+3. **Delete Partitions**: Remove existing partitions from a disk.
+4. **Modify Partitions**: Change the size or type of an existing partition.
+5. **Save Changes**: Save changes made to the partition table to disk.
+
+### Examples
+
+#### 1. Viewing Partitions
+To view the current partitions on your disk, you can use:
+```bash
+sudo fdisk -l /dev/sda
+```
+This will list all partitions on `/dev/sda`.
+
+#### 2. Adding a New Partition
+To add a new partition, you would typically follow these steps:
+1. Create a new empty partition table (this will erase all data on the disk):
+   ```bash
+   sudo fdisk /dev/sdb
+   ```
+2. In the `fdisk` prompt, type `n` to create a new partition. Follow the prompts to set the starting sector and size of the new partition.
+3. Save the changes with `w`.
+
+#### 3. Deleting a Partition
+To delete an existing partition:
+1. Start `fdisk`:
+   ```bash
+   sudo fdisk /dev/sdb
+   ```
+2. Select the partition you want to delete (use `d` followed by the partition number).
+3. Save the changes with `w`.
+
+#### 4. Modifying a Partition
+To modify an existing partition:
+1. Start `fdisk`:
+   ```bash
+   sudo fdisk /dev/sdb
+   ```
+2. Select the partition you want to modify (use `p` or `n` to list all partitions, then select one).
+3. Use commands like `d` to delete a partition, `n` to create a new partition, and so on.
+4. Save the changes with `w`.
+
+### Interactive Mode
+The default behavior of `fdisk` is interactive. Once you start it, you will be prompted for each action:
+1. Type `p` to print the current partition table.
+2. Type `n` to create a new partition.
+3. Follow the prompts to set the size and type of the new partition.
+4. After setting up your partitions, type `w` to write the changes to disk.
+
+### Common Commands in fdisk
+- **p**: Print the partition table.
+- **n**: Create a new partition.
+- **d**: Delete a partition.
+- **t**: Change the system ID of a partition (useful for changing file systems).
+- **w**: Write the changes to disk and exit.
+- **q**: Quit without saving changes.
+
+### Example Scenario
+Suppose you want to add a new primary partition on `/dev/sdb`:
+1. Open `fdisk` with:
+   ```bash
+   sudo fdisk /dev/sdb
+   ```
+2. Type `n` and press Enter.
+3. Select the default (primary) partition (`p`) or any other type if you know what you're doing, then press Enter.
+4. Set the first sector as default by pressing Enter.
+5. Set the last sector to cover the entire disk (or specify a size).
+6. Type `t` and then enter the new file system type code for your partition (e.g., 83 for Linux filesystem).
+7. Save changes with `w`.
+
+This is a basic overview of using the `fdisk` command to manage partitions on a Linux system. For more detailed help, you can always access the manual page by typing:
+```bash
+man fdisk
+```
+
