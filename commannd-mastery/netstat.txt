@@ -1,89 +1,95 @@
- The `netstat` command in Linux is a powerful tool used to display network-related information, such as active connections, routing tables, interface statistics, masquerade rules, and multicast memberships. Here are some of its key features along with examples:
+ The `netstat` command is a powerful tool in Kali Linux used to display network connections, routing tables, interface statistics, and masquerade rules. Here are some of its features along with examples:
 
-### 1. Display Active Internet Connections
-The most common use of `netstat` is to show the current TCP and UDP connections on a system.
+### 1. Displaying Network Connections
+The most common use of `netstat` is to show active network connections (both incoming and outgoing).
+
 ```sh
-netstat -tuln
+netstat -a
 ```
-This command will display:
-- **-t**: Show only TCP ports.
-- **-u**: Show only UDP ports.
-- **-l**: Display only listening ports.
-- **-n**: Show numerical addresses instead of trying to resolve hostnames.
+This command will display all connections, both listening and established.
 
-Example output:
-```
-Active Internet connections (only servers)
-Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
-tcp6       0      0 :::22                   :::*                    LISTEN      1357/sshd           
-tcp6       0      0 ::1:631                 :::*                    LISTEN      487/cupsd           
-udp        0      0 192.168.1.100:53         0.0.0.0:*                           78/systemd-resolve 
-udp        0      0 192.168.1.100:123         0.0.0.0:*                           487/cupsd           
-```
+### 2. Displaying Listening Ports
+To see which ports are open and listening on your machine, you can use:
 
-### 2. Display Network Connections by Program
-You can also use `netstat` to find out which program is using a specific port.
 ```sh
-netstat -tuln | grep <port_number>
+netstat -l
 ```
-Example: To check if the HTTP server (port 80) is running:
-```sh
-netstat -tuln | grep 80
-```
+This will list only the network interfaces that are listening for incoming connections.
 
-### 3. Display IPv6 Connections
-If your system supports IPv6, `netstat` can display information about IPv6 connections.
-```sh
-netstat -t6uln
-```
-This command will show both IPv4 and IPv6 connections if they are active on the system.
+### 3. Displaying Established Connections
+If you want to see only the established connections, you can use:
 
-### 4. Display Routing Table
-The routing table shows how data packets are directed from one network interface to another through various networks until they reach their destination.
 ```sh
-netstat -r
+netstat -t
 ```
-Example output:
-```
-Kernel IP routing table
-Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
-default         192.168.1.1     0.0.0.0         UG    0      0        0 eth0
-192.168.1.0     *               255.255.255.0   UG    0      0        0 eth0
-```
+This will display TCP connections in table format and include information about each connection, including the local address and port, the foreign address and port, state, PID/Program name.
 
-### 5. Display Network Interface Statistics
-This can give you detailed statistics about network interfaces, including bytes sent and received, errors, dropped packets, etc.
+### 4. Displaying UDP Connections
+For UDP connections (which are not associated with TCP), you can use:
+
+```sh
+netstat -u
+```
+This will display only UDP connections.
+
+### 5. Displaying Unix Sockets
+If you need to see Unix domain sockets, you can use:
+
+```sh
+netstat -x
+```
+This will list Unix domain socket connections.
+
+### 6. Displaying Detailed Information
+To get more detailed information about network interfaces and their statistics, you can use:
+
 ```sh
 netstat -i
 ```
-Example output:
-```
-Kernel Interface table
-Iface      MTU    RX-OK   RX-ERR   RX-DRP   RX-OVR    TX-OK   TX-ERR   TX-DRP   TX-OVR   Coll
-eth0       1500    123456  12      34       56        7890    0       0       0       0
-lo         65536   123456  0       0        0         123456 0       0       0       0
-```
+This will display interface statistics, including the MTU (Maximum Transmission Unit), RX packets (received packets), TX packets (transmitted packets), errors, dropped, and overruns.
 
-### 6. Display Masquerade Rules (for iptables)
-If you are using `iptables` for NAT, `netstat` can display the masquerading rules.
+### 7. Displaying Routing Table
+To see the current routing table, you can use:
+
 ```sh
-netstat -tuln | grep :masq
+netstat -r
 ```
-This is useful if you need to check your IP masquerading settings.
+This will display the kernel's IP routing table.
 
-### 7. Display Multicast Membership
-Multicast groups that a host has joined can be displayed using `netstat`.
+### 8. Combining Options
+You can combine multiple options to get specific information. For example, to see both TCP connections and listening ports, you can do:
+
 ```sh
-netstat -g
+netstat -tln
 ```
-Example output:
-```
-IPv4 Multicast Memberships
-Interface       Group
-eth0            224.0.0.1
-lo              224.0.0.2
-```
+This command will show all TCP connections, list the listening ports, and include interface details.
 
-### Summary
-`netstat` is a versatile command that provides detailed information about network configurations and connections on Linux systems, making it an essential tool for troubleshooting and understanding the network stack.
+### Examples
+Here are some practical examples of using `netstat` in Kali Linux:
+
+1. **Check for Listening Ports:**
+   ```sh
+   netstat -l | grep tcp
+   ```
+   This will show only the TCP ports that are listening on your machine.
+
+2. **Show All Connections and Their States:**
+   ```sh
+   netstat -tuln
+   ```
+   This command will display all TCP, UDP connections, their states, local addresses, foreign addresses, and PIDs of processes associated with these connections.
+
+3. **Display Unix Sockets:**
+   ```sh
+   netstat -lx
+   ```
+   This will show Unix domain socket connections.
+
+4. **Check for Established Connections:**
+   ```sh
+   netstat -t | grep ESTABLISHED
+   ```
+   This will list all established TCP connections.
+
+By using these options and examples, you can effectively monitor network activities on your Kali Linux system.
 
